@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mc
+  labels:
+    app: mc
+spec:
+  selector:
+    matchLabels:
+      app: mc
+    replicas: 1
+    template: 
+    metadata:
+      labels: app:mc
+    spec:
+      containers:
+        - name: mc
+          image: 
+      ports:
+        - name: mc-port
+          containerPort: 11211

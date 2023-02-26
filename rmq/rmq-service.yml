@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+matadata:
+  name: mq01
+spec:
+  ports:
+    - port: 15672
+      targetPort: mq01-port
+      protocol: TCP
+  selector:
+    app: mq01
+  type: ClusterIP

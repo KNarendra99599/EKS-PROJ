@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  selector:
+    matchLabels:
+      app: app
+    replicas: 1
+    template: 
+    metadata:
+      labels: app:app
+    spec:
+      containers:
+        - name: app
+          image: 
+      ports:
+        - name: app-port
+          containerPort: 11211
+      initContainers:
+        - name:init-mydb
+          image: busybox
+          command: ['sh','-c','until nslookup db; do echo waiting for mydb; sleep 2; done; ']
+        - name:init-memcache
+          image: busybox
+          command: ['sh','-c','until nslookup cache01; do echo waiting for mydb; sleep 2; done; ']
+

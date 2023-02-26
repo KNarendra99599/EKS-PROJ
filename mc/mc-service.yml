@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+matadata:
+  name: cache01
+spec:
+  ports:
+    - port: 11211
+      targetPort: mc-port
+      protocol: TCP
+  selector:
+    app: mc
+  type: ClusterIP
