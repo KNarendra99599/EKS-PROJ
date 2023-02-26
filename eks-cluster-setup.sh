@@ -1,10 +1,10 @@
 
 #!/bin/bash
 #Variables
-CLUSTER_NAME=projectname-eks-cluster
+CLUSTER_NAME=projectname-eks-cluster3
 REGION=us-east-1
-NODE_NAME=Linux_node
-KEY_NAME=eks_key
+NODE_NAME=linux-nodes1
+KEY_NAME=Newkeypair
 
 
 #Set AWS credentials before script execution
@@ -19,14 +19,14 @@ then
   #Creation of EKS cluster
   eksctl create cluster \
   --name $CLUSTER_NAME \
-  --version 1.20 \
+  --version 1.22 \
   --region $REGION \
   --nodegroup-name $NODE_NAME \
   --nodes 2 \
   --nodes-min 1 \
   --nodes-max 4 \
   --node-type t3.medium \
-  --nodes-volume-size 8 \
+  --node-volume-size 8 \
   --ssh-access \
   --ssh-public-key $KEY_NAME \
   --managed
